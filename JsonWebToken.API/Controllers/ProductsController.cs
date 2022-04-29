@@ -1,4 +1,5 @@
-﻿using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
+﻿using JsonWebToken.API.Core.Application.Features.CQRS.Commands;
+using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,12 @@ namespace JsonWebToken.API.Controllers
         {
             var result = await _mediator.Send(new GetProductQueryRequest(id));
             return result == null? NotFound() : Ok(result);
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var result = await _mediator.Send(new DeleteProductCommandRequest(id));
+            return NoContent();
         }
     }
 }
