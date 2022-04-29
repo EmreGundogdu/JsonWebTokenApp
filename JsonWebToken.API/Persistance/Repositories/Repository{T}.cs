@@ -45,7 +45,7 @@ namespace JsonWebToken.API.Persistance.Repositories
         public async Task UpdateAsync(T entity)
         {
             _context.Set<T>().Update(entity);
-            await _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
