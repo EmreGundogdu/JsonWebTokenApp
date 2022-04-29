@@ -3,6 +3,7 @@ using JsonWebToken.API.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JsonWebToken.API.Persistance.Migrations
 {
     [DbContext(typeof(JwtContext))]
-    partial class JwtContextModelSnapshot : ModelSnapshot
+    [Migration("20220429164555_updatedProduct")]
+    partial class updatedProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
