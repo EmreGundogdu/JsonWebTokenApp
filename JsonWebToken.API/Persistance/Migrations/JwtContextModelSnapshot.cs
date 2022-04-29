@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace JsonWebToken.API.Migrations
+namespace JsonWebToken.API.Persistance.Migrations
 {
     [DbContext(typeof(JwtContext))]
     partial class JwtContextModelSnapshot : ModelSnapshot

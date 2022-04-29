@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace JsonWebToken.API.Migrations
+namespace JsonWebToken.API.Persistance.Migrations
 {
     public partial class Initial : Migration
     {

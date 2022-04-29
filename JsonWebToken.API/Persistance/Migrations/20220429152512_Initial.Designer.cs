@@ -8,10 +8,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace JsonWebToken.API.Migrations
+namespace JsonWebToken.API.Persistance.Migrations
 {
     [DbContext(typeof(JwtContext))]
-    [Migration("20220429131926_Initial")]
+    [Migration("20220429152512_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
