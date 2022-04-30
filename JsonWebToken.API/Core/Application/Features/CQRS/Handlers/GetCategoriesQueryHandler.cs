@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace JsonWebToken.API.Core.Application.Features.CQRS.Handlers
 {
-    public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesQueryRequest, List<CategoryListDto>
+    public class GetCategoriesQueryHandler : IRequestHandler<GetCategoriesQueryRequest, List<CategoryListDto>>
     {
         readonly IRepository<Category> _repository;
         readonly IMapper _mapper;
