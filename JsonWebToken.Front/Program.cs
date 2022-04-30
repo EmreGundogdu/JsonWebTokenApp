@@ -11,13 +11,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCo
     opt.Cookie.SameSite = SameSiteMode.Strict;
     opt.Cookie.HttpOnly = true;
     opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-    opt.Cookie.Name = "JwtCookie"
+    opt.Cookie.Name = "JwtCookie";
 });
 
 
 var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapDefaultControllerRoute();
