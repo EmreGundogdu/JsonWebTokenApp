@@ -7,7 +7,7 @@ namespace JsonWebToken.API.Infrastructure.Tools
 {
     public class JwtTokenGenerator
     {
-        public static string GenerateToken(CheckUserResponseDto dto)
+        public static JwtTokenResponse GenerateToken(CheckUserResponseDto dto)
         {
             List<Claim> claims = new List<Claim>();
 
@@ -19,7 +19,7 @@ namespace JsonWebToken.API.Infrastructure.Tools
 
             JwtSecurityTokenHandler handler = new();
 
-            return handler.WriteToken(token);
+            return new JwtTokenResponse(handler.WriteToken(token));
         }
     }
 }

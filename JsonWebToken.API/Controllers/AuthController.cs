@@ -25,14 +25,14 @@ namespace JsonWebToken.API.Controllers
             await _mediator.Send(request);
             return Created("", request);
         }
-        [HttpPost]
+        [HttpPost("[action]")]
         public async Task<IActionResult> SignIn(CheckUserQueryRequest request)
         {
            var userDto =  await _mediator.Send(request);
             if (userDto.IsExist)
             {
-                var token = JwtTokenGenerator.GenerateToken(userDto);
-                return Created("", 123);
+                JwtTokenResponse token = JwtTokenGenerator.GenerateToken(userDto);
+                return Created("", token);
             }
             return BadRequest("Username veya password hatalı");
         }
