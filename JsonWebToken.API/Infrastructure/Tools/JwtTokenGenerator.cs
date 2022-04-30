@@ -19,11 +19,13 @@ namespace JsonWebToken.API.Infrastructure.Tools
             claims.Add(new Claim(ClaimTypes.Name, dto.Username));
             claims.Add(new Claim(ClaimTypes.NameIdentifier, dto.Id.ToString()));
 
-            JwtSecurityToken token = new(issuer: JwtTokenSettings.Issuer, audience: JwtTokenSettings.Audience, claims: claims, notBefore: DateTime.Now, expires: DateTime.Now.AddDays(JwtTokenSettings.Expire), signingCredentials: signingCredentials);
+            var expireDate = DateTime.UtcNow.AddMinutes(1);
+
+            JwtSecurityToken token = new(issuer: JwtTokenSettings.Issuer, audience: JwtTokenSettings.Audience, claims: claims, notBefore: DateTime.UtcNow, expires:expireDate, signingCredentials: signingCredentials);
 
             JwtSecurityTokenHandler handler = new();
 
-            return new JwtTokenResponse(handler.WriteToken(token));
+            return new JwtTokenResponse(handler.WriteToken(token),expireDate);
         }
     }
 }
