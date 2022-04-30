@@ -46,6 +46,13 @@ builder.Services.AddAutoMapper(opt =>
         new CategoryProfile()
     });
 });
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("GlobalCors", config =>
+    {
+        config.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -59,6 +66,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("GlobalCors");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
