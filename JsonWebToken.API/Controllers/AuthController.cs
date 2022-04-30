@@ -1,8 +1,10 @@
 ﻿using JsonWebToken.API.Core.Application.Features.CQRS.Commands;
 using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
+using JsonWebToken.API.Infrastructure.Tools;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace JsonWebToken.API.Controllers
 {
@@ -29,6 +31,7 @@ namespace JsonWebToken.API.Controllers
            var userDto =  await _mediator.Send(request);
             if (userDto.IsExist)
             {
+                var token = JwtTokenGenerator.GenerateToken(userDto);
                 return Created("", 123);
             }
             return BadRequest("Username veya password hatalı");
