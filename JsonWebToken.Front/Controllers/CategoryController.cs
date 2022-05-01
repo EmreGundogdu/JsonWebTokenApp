@@ -16,9 +16,7 @@ namespace JsonWebToken.Front.Controllers
 
         public async Task<IActionResult> List()
         {
-            var client = this.httpClientFactory.CreateClient();
-            var token = User.Claims.SingleOrDefault(x => x.Type == "accesstoken")?.Value;
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            var client = this.CreateClient();
             var response = await client.GetAsync("http://localhost:5186/api/categories");
             if (response.IsSuccessStatusCode)
             {
@@ -37,6 +35,33 @@ namespace JsonWebToken.Front.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            var client = this.CreateClient();
+            var response = await client.DeleteAsync($"http://localhost:5186/api/categories/{id}");
+
+            return RedirectToAction("List");
+        }
+        public IActionResult Create()
+        {
+            return View(new CategoryCreateRequestModel());
+        }
+        [HttpPost]
+        public IActionResult Create(CategoryCreateRequestModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("List");
+            }
+            return View(model);
+        }
+        public HttpClient CreateClient()
+        {
+            var client = this.httpClientFactory.CreateClient();
+            var token = User.Claims.SingleOrDefault(x => x.Type == "accesstoken")?.Value;
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            return client;
         }
     }
 }
