@@ -33,7 +33,7 @@ namespace JsonWebToken.API.Controllers
            var userDto =  await _mediator.Send(request);
             if (userDto.IsExist)
             {
-                JwtTokenResponse token = JwtTokenGenerator.GenerateToken(userDto);
+                var token = JwtTokenGenerator.GenerateToken(userDto);
                 return Created("", token);
             }
             return BadRequest("Username veya password hatalı");

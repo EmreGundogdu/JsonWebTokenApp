@@ -1,0 +1,34 @@
+﻿@model List<CategoryListResponseModel>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Definition</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.Count >0)
+        {
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Definition</td>
+                </tr>
+            }
+
+
+
+            }
+            else
+            {
+                <tr>
+                    <td>Data bulunamadı</td>
+                </tr>
+            }
+
+    </tbody>
+</table>
