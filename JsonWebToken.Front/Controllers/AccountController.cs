@@ -42,9 +42,8 @@ namespace JsonWebToken.Front.Controllers
                 if (token is not null)
                 {
 
-                    //token.Claims.Where(x => x.Type == ClaimTypes.Role).Select(x => x.ValueType);
                     var claims = token.Claims.ToList();
-                    claims.Add(new Claim("accesstoken", tokenModel.Token == null ? "" : tokenModel.Token));
+                    claims.Add(new Claim("accesstoken", tokenModel?.Token == null ? "" : tokenModel.Token));
                     ClaimsIdentity identity = new(claims, JwtBearerDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties
                     {
