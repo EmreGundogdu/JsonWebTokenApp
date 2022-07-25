@@ -4,7 +4,6 @@ using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
 using JsonWebToken.API.Core.Application.Interfaces;
 using JsonWebToken.API.Core.Domain;
 using MediatR;
-using System.Collections.Generic;
 
 namespace JsonWebToken.API.Core.Application.Features.CQRS.Handlers
 {

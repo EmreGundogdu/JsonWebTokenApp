@@ -1,7 +1,6 @@
 ﻿using JsonWebToken.API.Core.Application.Interfaces;
 using JsonWebToken.API.Persistance.Context;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace JsonWebToken.API.Persistance.Repositories
@@ -39,7 +38,7 @@ namespace JsonWebToken.API.Persistance.Repositories
         public async Task RemoveAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
-            await _context.SaveChangesAsync();  
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(T entity)

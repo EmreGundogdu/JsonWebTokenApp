@@ -3,7 +3,6 @@ using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JsonWebToken.API.Controllers
@@ -11,7 +10,7 @@ namespace JsonWebToken.API.Controllers
     [EnableCors]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : ControllerBase
     {
         readonly IMediator _mediator;
@@ -50,6 +49,6 @@ namespace JsonWebToken.API.Controllers
         {
             await _mediator.Send(new DeleteCategoryCommandRequest(id));
             return NoContent();
-        }       
+        }
     }
 }

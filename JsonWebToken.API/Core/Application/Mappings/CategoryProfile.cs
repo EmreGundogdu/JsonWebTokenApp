@@ -4,7 +4,7 @@ using JsonWebToken.API.Core.Domain;
 
 namespace JsonWebToken.API.Core.Application.Mappings
 {
-    public class CategoryProfile:Profile
+    public class CategoryProfile : Profile
     {
         public CategoryProfile()
         {

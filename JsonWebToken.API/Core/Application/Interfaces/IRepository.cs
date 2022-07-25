@@ -7,7 +7,7 @@ namespace JsonWebToken.API.Core.Application.Interfaces
         Task<List<T>> GetAllAsync();
         Task<T?> GetByIdAsync(object id);
         Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filterExpression);
-        Task CreateAsync(T entity); 
+        Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
     }

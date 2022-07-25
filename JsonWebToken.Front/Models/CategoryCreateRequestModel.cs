@@ -4,7 +4,7 @@ namespace JsonWebToken.Front.Models
 {
     public class CategoryCreateRequestModel
     {
-        [Required(ErrorMessage ="Definition required")]
+        [Required(ErrorMessage = "Definition required")]
         public string Definition { get; set; }
     }
 }

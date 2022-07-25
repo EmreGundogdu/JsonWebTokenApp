@@ -3,9 +3,7 @@ using JsonWebToken.API.Core.Application.Features.CQRS.Queries;
 using JsonWebToken.API.Infrastructure.Tools;
 using MediatR;
 using Microsoft.AspNetCore.Cors;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace JsonWebToken.API.Controllers
 {
@@ -30,7 +28,7 @@ namespace JsonWebToken.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> SignIn(CheckUserQueryRequest request)
         {
-           var userDto =  await _mediator.Send(request);
+            var userDto = await _mediator.Send(request);
             if (userDto.IsExist)
             {
                 var token = JwtTokenGenerator.GenerateToken(userDto);

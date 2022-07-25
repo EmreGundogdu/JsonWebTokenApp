@@ -10,12 +10,12 @@ namespace JsonWebToken.Front.Controllers
         {
             return View();
         }
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminPage()
         {
             return View();
         }
-        [Authorize(Roles ="Member")]
+        [Authorize(Roles = "Member")]
         public IActionResult MemberPage()
         {
             return View();
