@@ -2,6 +2,7 @@
 using JsonWebToken.API.Core.Application.Interfaces;
 using JsonWebToken.API.Core.Domain;
 using MediatR;
+using System.Threading;
 
 namespace JsonWebToken.API.Core.Application.Features.CQRS.Handlers
 {
